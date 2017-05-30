@@ -1,0 +1,139 @@
+
+.toggle-container {
+  height: 60px;
+  margin: 50px auto;
+  width: 96px;
+}
+
+.toggle {
+  background-color: #E71D36;
+  cursor: pointer;
+  height: 40px;
+  line-height: 0;
+  margin: 16px 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 100%;
+}
+
+.toggle.active {
+  background-color: #011627;
+}
+
+.toggle:before,
+.toggle:after {
+  border-bottom: 20px solid transparent;
+  border-top: 20px solid transparent;
+  content: ' ';
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+.toggle:before {
+  border-right: 20px solid #E71D36;
+  margin-left: -20px;
+}
+.toggle:after {
+  border-left: 19px solid #E71D36;
+  margin-left: 96px;
+}
+
+.toggle.active:before {
+  border-right-color: #011627;
+}
+.toggle.active:after {
+  border-left-color: #011627;
+}
+
+.toggle span {
+  line-height: 40px;
+  position: absolute;
+  text-align: center;
+  width: 96px;
+}
+
+.toggle .on,
+.toggle.active .off {
+  -webkit-transition: margin 0.38s ease, color 0.19s ease;
+          transition: margin 0.38s ease, color 0.19s ease;
+}
+.toggle .off,
+.toggle.active .on {
+  color: #FDFFFC;
+  margin-left: 0;
+  -webkit-transition: margin 0.38s ease, color 1s ease;
+          transition: margin 0.38s ease, color 1s ease;
+}
+.toggle .on {
+  color: transparent;
+  margin-left: -80px;
+}
+.toggle.active .off {
+  color: transparent;
+  margin-left: 80px;
+}
+
+.toggle .icon:before {
+  background-color: #011627;
+  content: '';
+  height: 22px;
+  left: -8px;
+  position: absolute;
+  top: 9px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transition: all 0.4s ease;
+          transition: all 0.4s ease;
+  width: 22px;
+  z-index: 1;
+}
+
+.toggle.active .icon:before {
+  background-color: #FDFFFC;
+  left: 81px;
+}
+
+/*END OF TOGGLE BUTTON STYLING*/
+
+
+body {
+  background: url("http://cdn.wallpapersafari.com/37/13/vrO1XJ.jpg") no-repeat;
+  background-size: cover;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.container {
+  font-size: 2em;
+  border-radius: 10px;
+  width: 40%;
+  background-color: #FDFFFC;
+  opacity: 0.6;
+  color: #000;
+}
+
+#icon {
+  width: 3em;
+  height: 3em;
+}
+
+#temperature {
+  font-size: 5em;
+}
+
+#wind-speed-icon {
+  margin-right: 5px;
+}
+
+@media (max-width: 960px) {
+  #temperature {
+    font-size: 4em;
+  }
+  
+  .container {
+    width: 90%;
+    font-size: 1em;
+  }
+} 
