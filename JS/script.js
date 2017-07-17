@@ -1,22 +1,23 @@
 
 var weather;
 var fah = false;
-var skycons = new Skycons({"color": "black"});
+var skycons = new Skycons({"color": "#a94b08"});
 
 function render(weather) {
 
-      temp = CtoK(weather.currently.temperature, fah);
+      temp = CtoK(Math.round(weather.currently.temperature), fah);
       description = weather.currently.summary;
-      wind = weather.currently.windSpeed + " mps";
-      humidity = weather.currently.humidity + " %";
+      wind = Math.round(weather.currently.windSpeed) + " m/s";
+      humidity = weather.currently.humidity*100 + " %";
       icon =  weather.currently.icon;
-
+      realFeel = "Feels like " + CtoK(weather.currently.apparentTemperature.toFixed(1), fah);
 
       $("#temperature").html(temp);
       $("#description").html(description);
       $("#wind").html(wind);
       $("#humidity").html(humidity);
       $("canvas").attr("id",icon);
+      $("#realFeel").html(realFeel);
 
       switch (icon) {
         case "rain":
@@ -69,20 +70,20 @@ function render(weather) {
 }
 
 function CtoK(cdegree, f) {
-  if (fah) return Math.floor((cdegree*(9/5) + 32)) + ' &deg;F';
-  return cdegree + ' &deg;C';
+  if (fah) return Math.floor((cdegree*(9/5) + 32)) + '&deg;F';
+  return cdegree + '&deg;C';
 }
 
 $(document).ready(function() {
 
   var lat, lon;
-  var loc,temp,description,wind,humidity,icon;
+  var loc,temp,description,wind,humidity,icon,realFeel;
 
 
   $.getJSON("https://freegeoip.net/json/?callback=?", function(locData) {
     lat = locData.latitude;
     lon = locData.longitude;
-    loc = locData.city;
+    loc = locData.city + ", " + locData.country_name;
     $("#location").html(loc);
 
     $.getJSON("https://api.darksky.net/forecast/6f4a37a8abd3a1edddff9e36e0fd6d56/"

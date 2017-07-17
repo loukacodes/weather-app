@@ -1,12 +1,12 @@
 
-.toggle-container {
+.toggle-button {
   height: 60px;
   margin: 50px auto;
   width: 96px;
 }
 
 .toggle {
-  background-color: #E71D36;
+  background-color: #f97c92;
   cursor: pointer;
   height: 40px;
   line-height: 0;
@@ -19,7 +19,7 @@
 }
 
 .toggle.active {
-  background-color: #011627;
+  background-color: #3ebbbd;
 }
 
 .toggle:before,
@@ -32,19 +32,19 @@
   width: 0;
 }
 .toggle:before {
-  border-right: 20px solid #E71D36;
+  border-right: 20px solid #f97c92;
   margin-left: -20px;
 }
 .toggle:after {
-  border-left: 19px solid #E71D36;
+  border-left: 19px solid #f97c92;
   margin-left: 96px;
 }
 
 .toggle.active:before {
-  border-right-color: #011627;
+  border-right-color: #3ebbbd;
 }
 .toggle.active:after {
-  border-left-color: #011627;
+  border-left-color: #3ebbbd;
 }
 
 .toggle span {
@@ -75,7 +75,7 @@
   margin-left: 80px;
 }
 
-.toggle .icon:before {
+.toggle .square:before {
   background-color: #011627;
   content: '';
   height: 22px;
@@ -90,7 +90,7 @@
   z-index: 1;
 }
 
-.toggle.active .icon:before {
+.toggle.active .square:before {
   background-color: #FDFFFC;
   left: 81px;
 }
@@ -108,10 +108,25 @@ body {
 .container {
   font-size: 2em;
   border-radius: 10px;
-  width: 90%;
+  width: 18em;
   background-color: #FDFFFC;
   opacity: 0.6;
   color: #000;
+  padding: 1em;
+  margin-bottom: 2em;
+}
+
+.weather-icon {
+  padding-top: 1em;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(20, 24, 33, 0), rgba(20, 24, 33, 0.75), rgba(20, 24, 33, 0));
+  width: 60%;
+  margin-top: 15px;
+  margin-bottom: 0px;
 }
 
 #icon {
@@ -120,20 +135,28 @@ body {
 }
 
 #temperature {
-  font-size: 3em;
+  font-size: 2em;
 }
 
+.extra-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+#humidity, #realFeel, #wind {
+  font-size: 0.85em;
+}
 #wind-speed-icon {
   margin-right: 5px;
 }
 
-@media (min-width: 960px) {
-  #temperature {
-    font-size: 5em;
-  }
-
-  .container {
-    width: 60%;
-    font-size: 1em;
-  }
+footer a {
+  text-decoration: none;
+  color:inherit;
+}
+footer a:hover {
+  color: #eee;
+  text-decoration: none;
 }
