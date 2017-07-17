@@ -108,7 +108,7 @@ body {
 .container {
   font-size: 2em;
   border-radius: 10px;
-  width: 40%;
+  width: 90%;
   background-color: #FDFFFC;
   opacity: 0.6;
   color: #000;
@@ -120,20 +120,20 @@ body {
 }
 
 #temperature {
-  font-size: 5em;
+  font-size: 3em;
 }
 
 #wind-speed-icon {
   margin-right: 5px;
 }
 
-@media (max-width: 960px) {
+@media (min-width: 960px) {
   #temperature {
-    font-size: 4em;
+    font-size: 5em;
   }
-  
+
   .container {
-    width: 90%;
+    width: 60%;
     font-size: 1em;
   }
-} 
+}

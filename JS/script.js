@@ -1,21 +1,70 @@
 
 var weather;
 var fah = false;
+var skycons = new Skycons({"color": "black"});
 
 function render(weather) {
-      loc = weather.name + ", " + weather.sys.country;
-      temp = CtoK(weather.main.temp, fah);
-      description = weather.weather[0].description;
-      wind = weather.wind.speed + " mps";
-      humidity = weather.main.humidity + " %";
-      icon = weather.weather[0].icon;
+      loc = weather.timezone;
+      temp = CtoK(weather.currently.temperature, fah);
+      description = weather.currently.summary;
+      wind = weather.currently.windSpeed + " mps";
+      humidity = weather.currently.humidity + " %";
+      icon =  weather.currently.icon;
 
       $("#location").html(loc);
       $("#temperature").html(temp);
       $("#description").html(description);
       $("#wind").html(wind);
       $("#humidity").html(humidity);
-      $("#icon").attr("src","http://openweathermap.org/img/w/"+ icon + ".png");
+      $("canvas").attr("id",icon);
+
+      switch (icon) {
+        case "rain":
+        skycons.add(document.getElementById("rain"), Skycons.RAIN);
+        break;
+
+        case "clear-day":
+        skycons.add(document.getElementById("clear-day"), Skycons.CLEAR_DAY);
+        break;
+
+        case "clear-night":
+        skycons.add(document.getElementById("clear-night"), Skycons.CLEAR_NIGHT);
+        break;
+
+        case "partly-cloudy-day":
+        skycons.add(document.getElementById("partly-cloudy-day"), Skycons.PARTLY_CLOUDY_DAY);
+        break;
+
+        case "partly-cloudy-night":
+        skycons.add(document.getElementById("partly-cloudy-night"), Skycons.PARTLY_CLOUDY_NIGHT);
+        break;
+
+        case "cloudy":
+        skycons.add(document.getElementById("cloudy"), Skycons.CLOUDY);
+        break;
+
+        case "sleet":
+        skycons.add(document.getElementById("sleet"), Skycons.SLEET);
+        break;
+
+        case "snow":
+        skycons.add(document.getElementById("snow"), Skycons.SNOW);
+        break;
+
+        case "wind":
+        skycons.add(document.getElementById("wind"), Skycons.WIND);
+        break;
+
+        case "fog":
+        skycons.add(document.getElementById("fog"), Skycons.FOG);
+        break;
+
+        default:
+        skycons.add(document.getElementById("clear-day"), Skycons.CLEAR_DAY);
+        break;
+
+      }
+        skycons.play();
 
 }
 
@@ -25,19 +74,21 @@ function CtoK(cdegree, f) {
 }
 
 $(document).ready(function() {
+
   var lat, lon;
   var loc,temp,description,wind,humidity,icon;
+
 
   $.getJSON("https://freegeoip.net/json/?callback=?", function(locData) {
     lat = locData.latitude;
     lon = locData.longitude;
 
-    $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + lat
-      + "&lon=" + lon
-      + "&&APPID=ff4d2c62dc64effa3941c6debcae69bc"
-      + "&&units=metric", function(apiData) {
+    $.getJSON("https://api.darksky.net/forecast/6f4a37a8abd3a1edddff9e36e0fd6d56/"
+      + lat + "," + lon
+      + "?callback=?&units=si", function(apiData) {
 
     weather = apiData;
+
     render(weather,fah);
 
     $(".toggle").on("click",function() {
