@@ -4,14 +4,14 @@ var fah = false;
 var skycons = new Skycons({"color": "black"});
 
 function render(weather) {
-      loc = weather.timezone;
+
       temp = CtoK(weather.currently.temperature, fah);
       description = weather.currently.summary;
       wind = weather.currently.windSpeed + " mps";
       humidity = weather.currently.humidity + " %";
       icon =  weather.currently.icon;
 
-      $("#location").html(loc);
+
       $("#temperature").html(temp);
       $("#description").html(description);
       $("#wind").html(wind);
@@ -82,6 +82,8 @@ $(document).ready(function() {
   $.getJSON("https://freegeoip.net/json/?callback=?", function(locData) {
     lat = locData.latitude;
     lon = locData.longitude;
+    loc = locData.city;
+    $("#location").html(loc);
 
     $.getJSON("https://api.darksky.net/forecast/6f4a37a8abd3a1edddff9e36e0fd6d56/"
       + lat + "," + lon
