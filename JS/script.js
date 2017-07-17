@@ -28,9 +28,9 @@ $(document).ready(function() {
   var lat, lon;
   var loc,temp,description,wind,humidity,icon;
   
-  $.getJSON("http://ip-api.com/json", function(locData) {
-    lat = locData.lat;
-    lon = locData.lon;
+  $.getJSON("https://freegeoip.net/json/?callback=?", function(locData) {
+    lat = locData.latitude;
+    lon = locData.longitude;
     
     $.getJSON("http://api.openweathermap.org/data/2.5/weather?lat=" + lat 
       + "&lon=" + lon 
