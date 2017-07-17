@@ -28,7 +28,7 @@ $(document).ready(function() {
   var lat, lon;
   var loc,temp,description,wind,humidity,icon;
   
-  $.getJSON("http://ip-api.com/json", function(locData) {
+  $.getJSON("https://ipinfo.io/json/", function(locData) {
     lat = locData.lat;
     lon = locData.lon;
     
