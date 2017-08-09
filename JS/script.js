@@ -1,14 +1,14 @@
 
 var weather;
 var fah = false;
-var skycons = new Skycons({"color": "#a94b08"});
+var skycons = new Skycons({"color": '#297373'});
 
 function render(weather) {
 
       temp = CtoK(Math.round(weather.currently.temperature), fah);
       description = weather.currently.summary;
       wind = Math.round(weather.currently.windSpeed) + " m/s";
-      humidity = weather.currently.humidity*100 + " %";
+      humidity = Math.round(weather.currently.humidity*100) + " %";
       icon =  weather.currently.icon;
       realFeel = "Feels like " + CtoK(weather.currently.apparentTemperature.toFixed(1), fah);
 
@@ -94,9 +94,14 @@ $(document).ready(function() {
 
     render(weather,fah);
 
-    $(".toggle").on("click",function() {
+    $("#card").on("click",function() {
       fah = !fah;
       $(this).toggleClass("active");
+      if(fah) {
+        skycons = new Skycons({"color": '#FF8552'});
+      } else {
+        skycons = new Skycons({"color": '#297373'});
+      }
       return render(weather, fah);
 
     })

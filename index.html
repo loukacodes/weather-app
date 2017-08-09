@@ -9,39 +9,40 @@
 </head>
 
 <body>
-   <section class="toggle-button">
-     <div class="toggle active">
-       <span class="square"></span>
-       <span class="on">&deg;C</span>
-       <span class="off">&deg;F</span>
+    <section>
+      <div class="container text-center">
+        <section class="toggle-container">
+		  <div class="active" id="card">
+		    <figure class="on">&deg;F</figure>
+		    <figure class="off">&deg;C</figure>
+		  </div>
+   		</section>
+
+       <div class="loc"><span id="location">Location</span></div>
+         <hr>
+       <div class="temp"><span id="temperature">Temperature</span></div>
+       <canvas width="128" height="128"></canvas>
+         <hr>
+       <div class="description"><span id="description">Description</span></div>
+       <div class="wind">
+         <img src="http://www.iconninja.com/files/566/706/505/wind-icon.svg" id="wind-speed-icon" width="30px" height="30px">
+           <span id="wind">Wind</span>
+        </div>
+       <div class="humidity">
+         <img src="https://image.flaticon.com/icons/svg/56/56435.svg" id="humidity-icon" width="30px" height="30px">
+           <span id="humidity">Humidity</span>
+       </div>
      </div>
    </section>
-
-   <section>
-     <div class="container text-center">
-       <span><img src="https://image.flaticon.com/icons/svg/67/67347.svg" width="30" height="30" alt="location-icon"></span>
-       <div id="location">Location</div>
-         <hr>
-           <canvas class="weather-icon" width="158" height="158"></canvas>
-             <div id="temperature">Temperature</div>
-               <strong><div id="description">Description</div></strong>
-             <hr>
-             <div class="extra-data">
-               <div id="realFeel">Feels Like</div>
-               <div><img src="https://image.flaticon.com/icons/svg/56/56086.svg" id="wind-speed-icon" alt="wind-icon" width="30px" height="30px"><span id="wind">Wind</span></div>
-               <div><img src="https://image.flaticon.com/icons/svg/56/56435.svg" id="humidity-icon" alt="humidity-icon" width="30px" height="30px"> <span id="humidity">Humidity</span></div>
-             </div>
-
-  </section>
-  </div>
-<footer class="text-center">
-  <p>Toggle Temperature Button based on
-    <strong><a href="http://codepen.io/jlewin/">Jack Lewin's pen</a></strong>
-  </p>
-  <p>Designed and coded by <strong><a href="https://github.com/trangtmtran">Trang Tran</a></strong></p>
-</footer>
-
-
+   
+   <footer class="text-center" id="main-footer">
+     <p>Designed and coded by 
+       <strong>
+         <a href="https://github.com/trangtmtran" target="_blank">Trang Tran</a>
+       </strong>
+     </p>
+   </footer>
+  
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
